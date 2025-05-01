@@ -32,7 +32,7 @@ print(f"'users.dat' created with {len(users_df)} entries.")
 
 # --- 2. 영화 데이터 생성 (movies.dat) ---
 print(f"Generating {NUM_MOVIES} movies...")
-movie_ids = np.arange(1, 1 + NUM_MOVIES) # 영화 ID는 101부터 시작 가정
+movie_ids = np.arange(1, 1 + NUM_MOVIES)
 
 # 샘플 장르 목록
 genres_options = [

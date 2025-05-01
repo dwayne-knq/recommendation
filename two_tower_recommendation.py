@@ -62,7 +62,7 @@ def load_data(data_dir="ml-1m-sample"):
     # --- 2. 피처 엔지니어링 (여기서는 간단히 ID만 사용) ---
     # TODO: users, movies 데이터프레임에서 추가 피처 추출 및 전처리 필요
     # 예: 영화 장르 처리 (이 코드는 예시이며 실제 모델에 맞게 수정 필요)
-    movies['movie_id_encoded'] = movie_encoder.transform(movies['movieId']) # ratings와 동일한 인코더 사용 중요
+    movies['movie_id_encoded'] = movie_encoder.transform(movies['movieId'])
     genres_list = list(set(g for genre_list in movies['genres'].str.split('|') for g in genre_list))
     genre_map = {genre: i for i, genre in enumerate(genres_list)}
     num_genres = len(genre_map)
@@ -334,7 +334,7 @@ if __name__ == "__main__":
     train_dataset = MovieLensDataset(train_ratings, all_movie_ids_list, train_user_item_set, movie_genre_indices, is_training=True)
     # For validation/testing, often we evaluate ranking metrics, not loss on sampled negatives
     # val_dataset can be simplified if only used for ranking evaluation
-    val_dataset = MovieLensDataset(val_ratings, all_movie_ids_list, train_user_item_set, movie_genre_indices, is_training=False) # is_training=False
+    val_dataset = MovieLensDataset(val_ratings, all_movie_ids_list, train_user_item_set, movie_genre_indices, is_training=False)
 
     batch_size = 512 # Reduced batch size for sample data
     train_loader = DataLoader(train_dataset, batch_size=batch_size, shuffle=True, num_workers=0) # Set num_workers=0 for simplicity
